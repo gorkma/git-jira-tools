@@ -1,0 +1,48 @@
+{
+  "name": "git-jira-tools",
+  "version": "0.7.0",
+  "description": "Git Jira tools",
+  "scripts": {
+    "start": "babel src -d bin -w --source-maps inline",
+    "build": "babel src -d bin"
+  },
+  "bin": {
+    "al-update": "bin/update.js",
+    "al-move": "bin/move.js",
+    "al-issues": "bin/issues.js",
+    "al-save": "bin/save.js",
+    "al-start": "bin/start.js",
+    "al-close": "bin/close.js",
+    "al-publish": "bin/publish.js"
+  },
+  "author": "@gorkma",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "inquirer": "^5.1.0",
+    "opn": "^5.3.0",
+    "ora": "^2.0.0",
+    "rambda": "^1.1.1",
+    "simple-git": "^1.92.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-pipe-operator": "^1.0.0",
+    "babel-preset-env": "^1.6.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "pipe-operator"
+    ]
+  }
+}

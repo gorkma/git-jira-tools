@@ -1,0 +1,5 @@
+.DS_Store
+# Intellij files
+.idea
+# Dependency directories
+node_modules
