@@ -52,4 +52,4 @@ const searchIssueTagBranch = exports.searchIssueTagBranch = async issueTag => {
     return branches.all.find(branch => branch.startsWith(`${_config2.default.prefix}${issueTag}`));
 };
 
-const issueBranchPattern = exports.issueBranchPattern = `/(${_config2.default.prefix}\d*)/`;
+const issueBranchPattern = exports.issueBranchPattern = `(${_config2.default.prefix}\\d*)`;

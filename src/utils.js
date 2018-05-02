@@ -34,4 +34,4 @@ export const searchIssueTagBranch = async issueTag => {
     return branches.all.find(branch => branch.startsWith(`${config.prefix}${issueTag}`))
 }
 
-export const issueBranchPattern = `/(${config.prefix}\d*)/`
+export const issueBranchPattern = `(${config.prefix}\\d*)`
