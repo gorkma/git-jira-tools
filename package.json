@@ -7,13 +7,13 @@
     "build": "babel src -d bin"
   },
   "bin": {
-    "al-update": "bin/update.js",
-    "al-move": "bin/move.js",
-    "al-issues": "bin/issues.js",
-    "al-save": "bin/save.js",
-    "al-start": "bin/start.js",
-    "al-close": "bin/close.js",
-    "al-publish": "bin/publish.js"
+    "gjt-update": "bin/update.js",
+    "gjt-move": "bin/move.js",
+    "gjt-issues": "bin/issues.js",
+    "gjt-save": "bin/save.js",
+    "gjt-start": "bin/start.js",
+    "gjt-close": "bin/close.js",
+    "gjt-publish": "bin/publish.js"
   },
   "author": "@gorkma",
   "license": "MIT",
