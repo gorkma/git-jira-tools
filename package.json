@@ -1,6 +1,6 @@
 {
   "name": "git-jira-tools",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "description": "Git Jira tools",
   "scripts": {
     "start": "babel src -d bin -w --source-maps inline",
