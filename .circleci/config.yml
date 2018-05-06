@@ -8,8 +8,6 @@ jobs:
   build:
     <<: *defaults
     steps:
-      - run: mkdir -p workspace
-      - run: cd ./workspace
       - checkout
       - restore_cache:
           keys:
