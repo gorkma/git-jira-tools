@@ -51,9 +51,10 @@ const run = async (issueTag, issueName, options) => {
   spinner.succeed('Branch created');
 };
 
-const [node, command, ...words] = process.argv;
+const words = process.argv.slice(2);
 
 const options = words.filter(word => word.startsWith('--'));
 const message = words.filter(word => !word.startsWith('--'));
 
+// eslint-disable-next-line no-console
 run(message.shift(), message.join(_config2.default.branchSeparator).toLowerCase(), options).catch(e => console.error(e));

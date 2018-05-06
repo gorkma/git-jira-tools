@@ -14,25 +14,26 @@ var _utils = require('./utils');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const run = async commitMessage => {
-    const spinner = (0, _ora2.default)();
+  const spinner = (0, _ora2.default)();
 
-    if (commitMessage === '') {
-        return spinner.fail('You must provide a commit message');
-    }
+  if (commitMessage === '') {
+    return spinner.fail('You must provide a commit message');
+  }
 
-    const currentBranch = (await (0, _promise2.default)().status()).current;
+  const currentBranch = (await (0, _promise2.default)().status()).current;
 
-    if (!currentBranch.match(_utils.issueBranchPattern)) {
-        return spinner.fail('Invalid operation. You are not on a issue branch');
-    }
+  if (!currentBranch.match(_utils.issueBranchPattern)) {
+    return spinner.fail('Invalid operation. You are not on a issue branch');
+  }
 
-    spinner.start('Committing');
-    const issueTag = currentBranch.match(_utils.issueBranchPattern)[0];
-    await (0, _promise2.default)().raw(['commit', '-m', `${issueTag} ${commitMessage}`]);
+  spinner.start('Committing');
+  const issueTag = currentBranch.match(_utils.issueBranchPattern)[0];
+  await (0, _promise2.default)().raw(['commit', '-m', `${issueTag} ${commitMessage}`]);
 
-    spinner.succeed('Commited');
+  spinner.succeed('Commited');
 };
 
-const [node, command, ...message] = process.argv;
+const message = process.argv.slice(2);
 
+// eslint-disable-next-line no-console
 run(message.join(' ')).catch(e => console.error(e));

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import git from 'simple-git/promise'
-import ora from 'ora';
-import { searchIssueTagBranch } from './utils';
-import config from './config';
+import ora from 'ora'
+import { searchIssueTagBranch } from './utils'
+import config from './config'
 
 const run = async (issueTag, issueName, options) => {
   const spinner = ora()
@@ -39,9 +39,10 @@ const run = async (issueTag, issueName, options) => {
   spinner.succeed('Branch created')
 }
 
-const [node, command, ...words] = process.argv
+const words = process.argv.slice(2)
 
 const options = words.filter(word => word.startsWith('--'))
 const message = words.filter(word => !word.startsWith('--'))
 
-run(message.shift(), message.join(config.branchSeparator).toLowerCase(), options).catch(e => console.error(e));
+// eslint-disable-next-line no-console
+run(message.shift(), message.join(config.branchSeparator).toLowerCase(), options).catch(e => console.error(e))

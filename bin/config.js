@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _dotenv = require('dotenv');
@@ -17,14 +17,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _dotenv2.default.load();
 
 const config = {
-    prefix: process.env.JG_TOOLS_PREFIX,
-    mainBranch: process.env.JG_TOOLS_MAIN_BRANCH || 'master',
-    branchSeparator: process.env.JG_TOOLS_BRANCH_SEPARATOR || '-',
-    remote: process.env.REMOTE || 'origin'
+  prefix: process.env.JG_TOOLS_PREFIX,
+  mainBranch: process.env.JG_TOOLS_MAIN_BRANCH || 'master',
+  branchSeparator: process.env.JG_TOOLS_BRANCH_SEPARATOR || '-',
+  remote: process.env.REMOTE || 'origin'
 };
 
 if (!process.env.JG_TOOLS_PREFIX) {
-    (0, _ora2.default)().fail('You must configure jira-git-tools. Add mandatory "prefix" variable to your environment');
+  (0, _ora2.default)().fail('You must configure jira-git-tools. Add mandatory "prefix" variable to your environment');
 }
 
 exports.default = config;

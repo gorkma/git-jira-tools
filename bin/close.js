@@ -65,9 +65,10 @@ const run = async issueTag => {
       await (0, _promise2.default)().raw(['branch', '-D', branch]);
       spinner.succeed('Local branch removed');
     } else {
-      return spinner.fail('Won\'t remove branch, not fully merged');
+      return spinner.fail("Won't remove branch, not fully merged");
     }
   }
 };
 
+// eslint-disable-next-line no-console
 run(process.argv[2]).catch(e => console.error(e));

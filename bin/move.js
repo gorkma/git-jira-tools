@@ -14,16 +14,17 @@ var _utils = require('./utils');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const run = async issueTag => {
-    const spinner = (0, _ora2.default)();
+  const spinner = (0, _ora2.default)();
 
-    const branch = !issueTag ? await (0, _utils.requestBranch)() : await (0, _utils.searchIssueTagBranch)(issueTag);
+  const branch = !issueTag ? await (0, _utils.requestBranch)() : await (0, _utils.searchIssueTagBranch)(issueTag);
 
-    if (!branch) {
-        return spinner.fail('Branch not found');
-    }
+  if (!branch) {
+    return spinner.fail('Branch not found');
+  }
 
-    await (0, _promise2.default)().checkout(branch);
-    spinner.succeed('Moved to branch');
+  await (0, _promise2.default)().checkout(branch);
+  spinner.succeed('Moved to branch');
 };
 
+// eslint-disable-next-line no-console
 run(process.argv[2]).catch(e => console.error(e));

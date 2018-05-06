@@ -2,21 +2,20 @@
 
 import git from 'simple-git/promise'
 import ora from 'ora'
-import { requestBranch, searchIssueTagBranch } from './utils';
+import { requestBranch, searchIssueTagBranch } from './utils'
 
-const run = async (issueTag) => {
-    const spinner = ora()
+const run = async issueTag => {
+  const spinner = ora()
 
-    const branch = !issueTag
-        ? await requestBranch()
-        : await searchIssueTagBranch(issueTag)
+  const branch = !issueTag ? await requestBranch() : await searchIssueTagBranch(issueTag)
 
-    if (!branch) {
-        return spinner.fail('Branch not found');
-    }
+  if (!branch) {
+    return spinner.fail('Branch not found')
+  }
 
-    await git().checkout(branch)
-    spinner.succeed('Moved to branch')
-};
+  await git().checkout(branch)
+  spinner.succeed('Moved to branch')
+}
 
-run(process.argv[2]).catch(e => console.error(e));
+// eslint-disable-next-line no-console
+run(process.argv[2]).catch(e => console.error(e))

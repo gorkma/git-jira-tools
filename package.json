@@ -4,7 +4,10 @@
   "description": "Git Jira tools",
   "scripts": {
     "start": "babel src -d bin -w --source-maps inline",
-    "build": "babel src -d bin"
+    "build": "babel src -d bin",
+    "precommit": "lint-staged",
+    "format": "prettier --write \"src/**/*.js\"",
+    "lint": "eslint --fix \"src/**/*.js\""
   },
   "bin": {
     "gjt-update": "bin/update.js",
@@ -13,7 +16,8 @@
     "gjt-save": "bin/save.js",
     "gjt-start": "bin/start.js",
     "gjt-close": "bin/close.js",
-    "gjt-publish": "bin/publish.js"
+    "gjt-publish": "bin/publish.js",
+    "gjt-republish": "bin/republish.js"
   },
   "author": "@gorkma",
   "license": "MIT",
@@ -28,21 +32,21 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-pipe-operator": "^1.0.0",
-    "babel-preset-env": "^1.6.1"
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.5",
+    "prettier": "^1.12.1"
   },
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
-    ],
-    "plugins": [
-      "pipe-operator"
+  "lint-staged": {
+    "src/**/*.js": [
+      "prettier",
+      "eslint",
+      "git add"
     ]
   }
 }

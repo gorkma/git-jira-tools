@@ -35,4 +35,5 @@ const run = async issueTag => {
   spinner.succeed('Publication updated');
 };
 
+// eslint-disable-next-line no-console
 run(process.argv[2]).catch(e => console.error(e));
