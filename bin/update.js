@@ -20,7 +20,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const run = async () => {
     const spinner = (0, _ora2.default)();
 
-    spinner.start('saving stash');
+    spinner.start('Saving stash');
     const status = await (0, _promise2.default)().status();
     const currentBranch = status.current;
 
@@ -32,14 +32,14 @@ const run = async () => {
     if (status.files.length > 0) {
         stashName = `${currentBranch.match(_utils.issueBranchPattern)[0]}-WIP`;
         await (0, _promise2.default)().stash(['save', '--include-untracked', stashName]);
-        spinner.succeed('stash saved');
+        spinner.succeed('Stash saved');
     }
 
-    spinner.start(`updating ${_config2.default.mainBranch}`);
+    spinner.start(`Updating ${_config2.default.mainBranch}`);
     await (0, _promise2.default)().checkout(_config2.default.mainBranch);
     await (0, _promise2.default)().pull();
 
-    spinner.succeed(`${_config2.default.mainBranch} updated`).start(`rebasing ${_config2.default.mainBranch}`);
+    spinner.succeed(`${_config2.default.mainBranch} updated`).start(`Rebasing ${_config2.default.mainBranch}`);
     await (0, _promise2.default)().checkout(currentBranch);
 
     try {
@@ -52,7 +52,7 @@ const run = async () => {
     spinner.succeed(`${_config2.default.mainBranch} rebased`);
 
     if (stashName) {
-        spinner.start('reapplying stash');
+        spinner.start('Reapplying stash');
         let rawStashes = await (0, _promise2.default)().stash(['list']);
         const stashIndex = rawStashes.split('\n').map(stash => {
             const nameRegexp = /.*:(.*)$/;
@@ -67,7 +67,7 @@ const run = async () => {
 
         await (0, _promise2.default)().stash(['apply', `stash@{${stashIndex}}`]);
         await (0, _promise2.default)().stash(['drop', `stash@{${stashIndex}}`]);
-        spinner.succeed('stash reapplied');
+        spinner.succeed('Stash reapplied');
     }
 };
 

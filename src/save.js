@@ -17,7 +17,7 @@ const run = async (commitMessage) => {
         return spinner.fail('Invalid operation. You are not on a issue branch')
     }
 
-    spinner.start('committing')
+    spinner.start('Committing')
     const issueTag = currentBranch.match(issueBranchPattern)[0]
     await git().raw(['commit', '-m', `${issueTag} ${commitMessage}`])
 

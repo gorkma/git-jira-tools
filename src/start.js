@@ -25,18 +25,18 @@ const run = async (issueTag, issueName, options) => {
   }
 
   if (options.find(word => word === '--from-current' || word === '--fc')) {
-    spinner.info('starting from current branch')
+    spinner.info('Starting from current branch')
   } else {
-    spinner.info(`starting from ${config.mainBranch} (provide "--from-current" or "--fc" to start from current branch)`)
-    spinner.start(`updating ${config.mainBranch}`)
+    spinner.info(`Starting from ${config.mainBranch} (provide "--from-current" or "--fc" to start from current branch)`)
+    spinner.start(`Updating ${config.mainBranch}`)
     await git().checkout(config.mainBranch)
     await git().pull()
     spinner.succeed(`${config.mainBranch} updated`)
   }
 
-  spinner.start('creating branch')
+  spinner.start('Creating branch')
   await git().checkoutLocalBranch(`${config.prefix}${issueTag}${config.branchSeparator}${issueName}`)
-  spinner.succeed('branch created')
+  spinner.succeed('Branch created')
 }
 
 const [node, command, ...words] = process.argv

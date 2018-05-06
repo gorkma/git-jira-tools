@@ -9,8 +9,6 @@ import config from './config';
 const run = async (issueTag) => {
     const spinner = ora()
 
-
-
     const branch = issueTag
         ? await searchIssueTagBranch(issueTag)
         : (await git().status()).current
@@ -23,7 +21,7 @@ const run = async (issueTag) => {
         return spinner.fail('Invalid operation. You are not on a issue branch')
     }
 
-    spinner.start('publishing')
+    spinner.start('Publishing')
     await git().push(config.remote, branch, {'--set-upstream': null})
     spinner.succeed('Published')
     openBrowser(`https://github.com/workshare/alpaca/compare/${config.mainBranch}...${branch}?expand=1`, {wait: false})

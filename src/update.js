@@ -8,7 +8,7 @@ import config from './config';
 const run = async () => {
     const spinner = ora()
 
-    spinner.start('saving stash')
+    spinner.start('Saving stash')
     const status = await git().status()
     const currentBranch = status.current
 
@@ -20,15 +20,15 @@ const run = async () => {
     if (status.files.length > 0) {
         stashName = `${currentBranch.match(issueBranchPattern)[0]}-WIP`
         await git().stash(['save', '--include-untracked', stashName])
-        spinner.succeed('stash saved')
+        spinner.succeed('Stash saved')
     }
 
-    spinner.start(`updating ${config.mainBranch}`)
+    spinner.start(`Updating ${config.mainBranch}`)
     await git().checkout(config.mainBranch)
     await git().pull()
 
     spinner.succeed(`${config.mainBranch} updated`)
-        .start(`rebasing ${config.mainBranch}`)
+        .start(`Rebasing ${config.mainBranch}`)
     await git().checkout(currentBranch)
 
     try {
@@ -43,7 +43,7 @@ const run = async () => {
     spinner.succeed(`${config.mainBranch} rebased`)
 
     if (stashName) {
-        spinner.start('reapplying stash')
+        spinner.start('Reapplying stash')
         let rawStashes = await git().stash(['list'])
         const stashIndex = rawStashes.split('\n')
             .map((stash) => {
@@ -60,7 +60,7 @@ const run = async () => {
 
         await git().stash(['apply', `stash@{${stashIndex}}`])
         await git().stash(['drop', `stash@{${stashIndex}}`])
-        spinner.succeed('stash reapplied')
+        spinner.succeed('Stash reapplied')
     }
 }
 

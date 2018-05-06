@@ -34,7 +34,7 @@ const run = async issueTag => {
         return spinner.fail('Invalid operation. You are not on a issue branch');
     }
 
-    spinner.start('publishing');
+    spinner.start('Publishing');
     await (0, _promise2.default)().push(_config2.default.remote, branch, { '--set-upstream': null });
     spinner.succeed('Published');
     (0, _opn2.default)(`https://github.com/workshare/alpaca/compare/${_config2.default.mainBranch}...${branch}?expand=1`, { wait: false });
