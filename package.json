@@ -2,6 +2,11 @@
   "name": "git-jira-tools",
   "version": "0.8.9",
   "description": "Git Jira tools",
+  "homepage": "https://github.com/gorkma/git-jira-tools",
+  "bugs": {
+    "url": "https://github.com/gorkma/git-jira-tools/issues",
+    "email": "gorka@540deg.com"
+  },
   "scripts": {
     "start": "npm run clean && babel src -d bin -w --source-maps inline",
     "build": "npm run clean && babel src -d bin",
