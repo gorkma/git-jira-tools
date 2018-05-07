@@ -1,6 +1,6 @@
 {
   "name": "git-jira-tools",
-  "version": "0.8.9",
+  "version": "0.8.10",
   "description": "Git Jira tools",
   "homepage": "https://github.com/gorkma/git-jira-tools",
   "bugs": {
