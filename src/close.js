@@ -47,7 +47,7 @@ const run = async issueTag => {
     const remove = (await inquirer.prompt([
       {
         name: 'remove',
-        message: 'Are you sure you want to close it (y or n)',
+        message: 'Are you sure you want to close it? (y or n)',
         validate: answer => ['y', 'n'].includes(answer.toLowerCase())
       }
     ]))['remove']

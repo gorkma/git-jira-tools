@@ -1,7 +1,7 @@
 {
   "name": "git-jira-tools",
   "version": "0.8.10",
-  "description": "Git Jira tools",
+  "description": "Git Jira tools - It helps avoiding repetitive git tasks on jira tag branch based projects",
   "homepage": "https://github.com/gorkma/git-jira-tools",
   "bugs": {
     "url": "https://github.com/gorkma/git-jira-tools/issues",
@@ -51,8 +51,8 @@
   },
   "lint-staged": {
     "src/**/*.js": [
-      "prettier",
-      "eslint",
+      "npm run format",
+      "npm run lint",
       "git add"
     ]
   }
