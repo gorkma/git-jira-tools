@@ -35,3 +35,14 @@ export const searchIssueTagBranch = async issueTag => {
 }
 
 export const issueBranchPattern = `(${config.prefix}\\d*)`
+
+export const githubLink = async branch => {
+  const remoteUrl = (await git().getRemotes(true)).find(remote => remote.name === config.remote).refs.fetch
+  const nameRegexp = /.*:(.*\/.*).git/
+
+  if (remoteUrl.match(nameRegexp)) {
+    const name = remoteUrl.match(nameRegexp)[1].trim()
+
+    return `https://github.com/${name}/compare/${config.mainBranch}...${branch}?expand=1`
+  }
+}

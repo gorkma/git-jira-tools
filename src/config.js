@@ -7,7 +7,7 @@ const config = {
   prefix: process.env.JG_TOOLS_PREFIX,
   mainBranch: process.env.JG_TOOLS_MAIN_BRANCH || 'master',
   branchSeparator: process.env.JG_TOOLS_BRANCH_SEPARATOR || '-',
-  remote: process.env.REMOTE || 'origin'
+  remote: process.env.JG_TOOLS_REMOTE || 'origin'
 }
 
 if (!process.env.JG_TOOLS_PREFIX) {

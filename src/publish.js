@@ -3,7 +3,7 @@
 import git from 'simple-git/promise'
 import ora from 'ora'
 import openBrowser from 'opn'
-import { issueBranchPattern, searchIssueTagBranch } from './utils'
+import { githubLink, issueBranchPattern, searchIssueTagBranch } from './utils'
 import config from './config'
 import inquirer from 'inquirer'
 
@@ -48,9 +48,7 @@ const run = async (issueTag, options) => {
   }
 
   if (!options.find(word => word === '--no-pr')) {
-    openBrowser(`https://github.com/workshare/alpaca/compare/${config.mainBranch}...${branch}?expand=1`, {
-      wait: false
-    })
+    openBrowser(await githubLink(branch), { wait: false })
   }
 }
 
